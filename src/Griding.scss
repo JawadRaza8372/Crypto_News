@@ -1,0 +1,6 @@
+@mixin gridSystem($grid) {
+  display: grid;
+  grid-template-columns: repeat($grid, 1fr);
+  gap: 30px;
+  width: 100%;
+}

@@ -1,0 +1,162 @@
+@import "../../Griding.scss";
+#tablecoinIcon {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+.exchangePage {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0 10px;
+  .rowhead {
+    @include gridSystem(6);
+    width: 90%;
+    margin: 10px auto;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+  }
+  .exchangeDiv {
+    height: calc(100% - 75px);
+    width: 90%;
+    padding: 15px 15px;
+    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    p {
+      padding: 10px 10px;
+      text-align: left;
+      color: black !important;
+      letter-spacing: 1px;
+    }
+    h3 {
+      padding: 5px 10px;
+      text-align: left;
+      color: black !important;
+      letter-spacing: 3px;
+    }
+
+    .row {
+      @include gridSystem(6);
+      margin: 10px 0;
+      align-items: center;
+    }
+  }
+}
+@media only screen and (max-width: 700px) {
+  .exchangePage {
+    .rowhead {
+      @include gridSystem(5);
+      strong {
+        &:first-child {
+          display: none;
+        }
+      }
+    }
+    .exchangeDiv {
+      .row {
+        @include gridSystem(5);
+
+        strong {
+          &:first-child {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .exchangePage {
+    .rowhead {
+      @include gridSystem(4);
+      strong {
+        &:nth-child(2) {
+          display: none;
+        }
+        &:first-child {
+          display: none;
+        }
+      }
+    }
+    .exchangeDiv {
+      .row {
+        @include gridSystem(4);
+
+        strong {
+          &:first-child {
+            display: none;
+          }
+        }
+        img {
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 490px) {
+  .exchangePage {
+    .rowhead {
+      @include gridSystem(3);
+      strong {
+        &:first-child {
+          display: none;
+        }
+        &:nth-child(2) {
+          display: none;
+        }
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+    .exchangeDiv {
+      .row {
+        @include gridSystem(3);
+
+        strong {
+          &:first-child {
+            display: none;
+          }
+          &:nth-child(2) {
+            display: none;
+          }
+        }
+        img {
+          display: none;
+        }
+        span {
+          &:last-child {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 400px) {
+  #secndSpan {
+    display: none !important;
+  }
+  .exchangePage {
+    padding-bottom: 30px;
+    .rowhead {
+      @include gridSystem(2);
+      strong {
+        &:nth-child(5) {
+          display: none;
+        }
+      }
+    }
+    .exchangeDiv {
+      .row {
+        @include gridSystem(2);
+      }
+    }
+    p {
+      display: none;
+    }
+  }
+}

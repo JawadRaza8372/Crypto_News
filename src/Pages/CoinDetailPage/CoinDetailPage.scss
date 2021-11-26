@@ -1,0 +1,117 @@
+@import "../../Griding.scss";
+.coinDetailsMain {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 10px 10px;
+  text-align: left;
+  .inputcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 450px;
+    height: 40px;
+    margin-bottom: 20px;
+    border: 2px solid #111d11;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+    select {
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      font-size: 1rem;
+      padding: 0 10px;
+      outline: none;
+      border: none;
+    }
+  }
+  h1 {
+    text-align: center;
+    margin: 15px 0;
+    color: var(--color);
+  }
+  p {
+    text-align: center;
+    margin: 20px 0;
+  }
+  .coinDetailGrid {
+    @include gridSystem(2);
+    min-height: 330px;
+    max-height: fit-content;
+    padding: 5px 0px;
+    place-items: center;
+    margin: 0 auto;
+    .coinsStats {
+      width: 250px;
+      padding: 0px 10px;
+      height: 320px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      h1 {
+        margin-bottom: 5px;
+        color: var(--color);
+      }
+      p {
+        text-align: left;
+      }
+      .row {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 2fr 1fr;
+        gap: auto;
+        margin: 5px 0;
+        span {
+          display: flex;
+          align-items: center;
+          &:first-child {
+            #icon {
+              margin-left: 5px;
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .finalContent {
+    width: calc(100% - 45px);
+    height: fit-content;
+    overflow: hidden;
+    padding: 20px 20px;
+    margin: 0 auto;
+    h1 {
+      text-transform: capitalize;
+      color: var(--color);
+    }
+    p {
+      text-align: left;
+    }
+    a {
+      text-decoration: none;
+      h1 {
+        color: var(--color);
+        text-decoration: underline;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 670px) {
+  .coinDetailsMain {
+    .coinDetailGrid {
+      @include gridSystem(1);
+      .coinsStats {
+        &:last-child {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}

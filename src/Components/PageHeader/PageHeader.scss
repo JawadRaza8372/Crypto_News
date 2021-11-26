@@ -1,0 +1,12 @@
+.pageHeader {
+  height: 50px;
+  width: 100%;
+  background: #11101d;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px;
+  h1 {
+    color: white;
+  }
+}

@@ -1,0 +1,33 @@
+@import "../../Griding.scss";
+.chart {
+  h2 {
+    margin: 20px 0;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 3px;
+  }
+  .gridRow {
+    @include gridSystem(2);
+    margin: 20px 0;
+    h3 {
+      text-align: center;
+    }
+  }
+  .chartLine {
+    width: 95%;
+    height: 100%;
+    max-height: 700px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+}
+@media only screen and (max-width: 670px) {
+  .chart {
+    .gridRow {
+      @include gridSystem(1);
+      h3 {
+        text-align: center;
+      }
+    }
+  }
+}
