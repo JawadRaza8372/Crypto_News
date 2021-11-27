@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import postr from "../../Assets/Presentation1.jpg";
+import postr from "../../Assets/newsbg.jpg";
 import videobg2 from "../../Assets/cmpl.mp4";
 import loader from "../../Assets/loader.gif";
 import "./LandingPage.scss";

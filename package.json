@@ -17,6 +17,8 @@
     "html-react-parser": "^1.4.0",
     "millify": "^4.0.0",
     "moment": "^2.29.1",
+    "netlify": "^9.0.0",
+    "netlify-cli": "^8.0.3",
     "react": "^17.0.2",
     "react-chartjs-2": "^3.3.0",
     "react-dom": "^17.0.2",
