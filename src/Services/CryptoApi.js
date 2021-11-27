@@ -1,16 +1,18 @@
 import axios from "axios";
+const baseUrl = "https://coinranking1.p.rapidapi.com";
+const rapiHost = "coinranking1.p.rapidapi.com";
+const rapikey = "cb558a912cmsh1ef4b63c1b8a09fp1eeb68jsna7e4b3133018";
 const fetchSpecCoin = async (coinid) => {
   var options = {
     method: "GET",
-    url: `https://coinranking1.p.rapidapi.com/coin/${coinid}`,
+    url: `${baseUrl}/coin/${coinid}`,
     headers: {
-      "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-      "x-rapidapi-key": "cb558a912cmsh1ef4b63c1b8a09fp1eeb68jsna7e4b3133018",
+      "x-rapidapi-host": `${rapiHost}`,
+      "x-rapidapi-key": `${rapikey}`,
     },
   };
 
   let responce = await axios.request(options);
-  console.log("specific coin", responce?.data);
   if (responce.statusText === "OK") {
     return { data: responce?.data?.data, error: null };
   } else {
@@ -20,15 +22,14 @@ const fetchSpecCoin = async (coinid) => {
 const fetchCoinHistory = async (coinid, time) => {
   var options = {
     method: "GET",
-    url: `https://coinranking1.p.rapidapi.com/coin/${coinid}/history/${time}`,
+    url: `${baseUrl}/coin/${coinid}/history/${time}`,
     headers: {
-      "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-      "x-rapidapi-key": "cb558a912cmsh1ef4b63c1b8a09fp1eeb68jsna7e4b3133018",
+      "x-rapidapi-host": `${rapiHost}`,
+      "x-rapidapi-key": `${rapikey}`,
     },
   };
 
   let responce = await axios.request(options);
-  console.log("specific coin history", responce?.data);
   if (responce.statusText === "OK") {
     return { data: responce?.data?.data, error: null };
   } else {
@@ -38,10 +39,10 @@ const fetchCoinHistory = async (coinid, time) => {
 const fetchGlobalStats = async () => {
   var options = {
     method: "GET",
-    url: "https://coinranking1.p.rapidapi.com/coins?limit=100",
+    url: `${baseUrl}/coins?limit=100`,
     headers: {
-      "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-      "x-rapidapi-key": "cb558a912cmsh1ef4b63c1b8a09fp1eeb68jsna7e4b3133018",
+      "x-rapidapi-host": `${rapiHost}`,
+      "x-rapidapi-key": `${rapikey}`,
     },
   };
   let responce = await axios.request(options);
@@ -61,7 +62,7 @@ const fetchNews = async (category) => {
     headers: {
       "x-bingapis-sdk": "true",
       "x-rapidapi-host": "bing-news-search1.p.rapidapi.com",
-      "x-rapidapi-key": "cb558a912cmsh1ef4b63c1b8a09fp1eeb68jsna7e4b3133018",
+      "x-rapidapi-key": `${rapikey}`,
     },
   };
   let responce = await axios.request(optionsNews);
@@ -74,15 +75,14 @@ const fetchNews = async (category) => {
 const fetchExchanges = async () => {
   var options = {
     method: "GET",
-    url: `https://coinranking1.p.rapidapi.com/exchanges`,
+    url: `${baseUrl}/exchanges`,
     headers: {
-      "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-      "x-rapidapi-key": "cb558a912cmsh1ef4b63c1b8a09fp1eeb68jsna7e4b3133018",
+      "x-rapidapi-host": `${rapiHost}`,
+      "x-rapidapi-key": `${rapikey}`,
     },
   };
 
   let responce = await axios.request(options);
-  console.log("exchanges", responce?.data);
   if (responce.statusText === "OK") {
     return { data: responce?.data?.data, error: null };
   } else {

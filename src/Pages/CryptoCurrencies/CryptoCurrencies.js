@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./CryptoCurrencies.scss";
 import { useSelector } from "react-redux";
-import millify from "millify";
 import MyCard from "../../Components/MyCard/MyCard";
 function CryptoCurrencies({ simplified }) {
   const [currencyTerm, setCurrencyTerm] = useState("");
   const { data } = useSelector((state) => state.cryptoApi);
   const [coins, setcoins] = useState([]);
-  const [coinsSimpl, setcoinsSimpl] = useState([]);
 
   useEffect(() => {
     const filterdata = data?.coins?.filter((coin) =>
       coin.name.toLowerCase().includes(currencyTerm.toLowerCase())
     );
     setcoins(filterdata);
-    if (coins) {
-      setcoinsSimpl();
-    }
   }, [data, currencyTerm]);
 
   return (

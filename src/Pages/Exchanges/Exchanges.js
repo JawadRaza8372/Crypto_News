@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Exchanges.scss";
 import { useSelector } from "react-redux";
-import millify from "millify";
-import HTMLReactParser from "html-react-parser";
 import TableContent from "./TableContent";
 function Exchanges() {
   const respon = useSelector((state) => state.cryptoExchng);

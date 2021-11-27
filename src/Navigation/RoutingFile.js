@@ -22,7 +22,6 @@ let DataRoute = ({ children, ...res }) => {
 };
 function RoutingFile() {
   const location = useLocation().pathname;
-  const newlocation = location.includes("/coinDetail/");
   return (
     <>
       {location === "/" ? (

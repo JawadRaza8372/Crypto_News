@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./AnimatedSideBar.scss";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
-import LogoutIcon from "@mui/icons-material/ExitToApp";
 import CloseIcon from "@mui/icons-material/Close";
 import LinkButton from "./LinkButton";
 import Cryptologo from "../../Assets/logo.png";
