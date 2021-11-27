@@ -27,30 +27,31 @@ function CoinDetailPage() {
       return `${con.rank}` === `${coinid}`;
     });
   const time = ["24h", "7d", "30d", "1y", "5y"];
-  const fetchHistory = async () => {
-    if (result) {
-      const rsp = await fetchCoinHistory(result?.rank, "5y");
-      if (rsp?.data) {
-        setcoinHistory(rsp?.data);
-      }
-    }
-  };
-  const fetchHistory2 = async (period) => {
-    if (result) {
-      const rsp = await fetchCoinHistory(result?.rank, period);
-      if (rsp?.data) {
-        setcoinHistory(rsp?.data);
-      }
-    }
-  };
+
   useEffect(() => {
+    const fetchHistory = async () => {
+      if (result) {
+        const rsp = await fetchCoinHistory(result?.rank, "5y");
+        if (rsp?.data) {
+          setcoinHistory(rsp?.data);
+        }
+      }
+    };
     fetchHistory();
-  }, []);
+  }, [result]);
   useEffect(() => {
+    const fetchHistory2 = async (period) => {
+      if (result) {
+        const rsp = await fetchCoinHistory(result?.rank, period);
+        if (rsp?.data) {
+          setcoinHistory(rsp?.data);
+        }
+      }
+    };
     if (timeStamp) {
       fetchHistory2(timeStamp);
     }
-  }, [timeStamp]);
+  }, [timeStamp, result]);
   return (
     <div className="coinDetailsMain">
       <h1 style={{ "--color": result?.color ? result?.color : "black" }}>

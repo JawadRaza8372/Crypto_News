@@ -9,17 +9,18 @@ function News({ simplified }) {
   const { data } = useSelector((state) => state.cryptoApi);
   const dispatch = useDispatch();
   const [newsCategory, setnewsCategory] = useState("");
-  const fetchNewsItem = async (categ) => {
-    const news = await fetchNews(categ);
-    if (news?.data) {
-      dispatch(setNews({ news: news?.data.value }));
-    } else {
-      console.log(news.error);
-    }
-  };
+
   useEffect(() => {
+    const fetchNewsItem = async (categ) => {
+      const news = await fetchNews(categ);
+      if (news?.data) {
+        dispatch(setNews({ news: news?.data.value }));
+      } else {
+        console.log(news.error);
+      }
+    };
     fetchNewsItem(newsCategory);
-  }, [newsCategory]);
+  }, [newsCategory, dispatch]);
   return (
     <div
       className="mainNewsdiv"
