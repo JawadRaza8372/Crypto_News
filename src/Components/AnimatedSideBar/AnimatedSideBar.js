@@ -16,6 +16,7 @@ function AnimatedSideBar({ children }) {
   const [activeLogo, setactiveLogo] = useState(false);
   const [screenSize, setscreenSize] = useState(null);
   const location = useHistory();
+  const pagelocation = useHistory().location.pathname;
   useEffect(() => {
     const handleResize = () => {
       setscreenSize(window.innerWidth);
@@ -33,69 +34,79 @@ function AnimatedSideBar({ children }) {
     }
   }, [screenSize]);
   return (
-    <section className="mainContainer">
-      <div className={expand ? "sidebar active" : "sidebar"}>
-        <div className="logoContent">
-          <div className="logo">
-            <img src={Cryptologo} id="logoicon" alt="crypto News" />
-            <div className="logoName">Crypto News</div>
+    <>
+      {pagelocation === "/home" ||
+      pagelocation === "/news" ||
+      pagelocation === "/exchange" ||
+      pagelocation === "/cryptoCurrency" ||
+      pagelocation.includes("/coinDetail/") ? (
+        <section className="mainContainer">
+          <div className={expand ? "sidebar active" : "sidebar"}>
+            <div className="logoContent">
+              <div className="logo">
+                <img src={Cryptologo} id="logoicon" alt="crypto News" />
+                <div className="logoName">Crypto News</div>
+              </div>
+              {expand && !activeLogo ? (
+                <CloseIcon id="menuIcon" onClick={() => setexpand(false)} />
+              ) : !expand && !activeLogo ? (
+                <MenuIcon id="menuIcon" onClick={() => setexpand(true)} />
+              ) : activeLogo ? (
+                <img
+                  src={Cryptologo}
+                  onClick={() => {
+                    location.push("/");
+                  }}
+                  id="logoImg"
+                  alt="crypto News"
+                />
+              ) : null}
+            </div>
+            <ul className="navList">
+              <li>
+                <LinkButton title="Home" link="/home">
+                  <HomeIcon id="navIcon" />
+                </LinkButton>
+              </li>
+              <li>
+                <LinkButton title="Crypto Currencies" link="/cryptoCurrency">
+                  <TimelineOutlinedIcon id="navIcon" />
+                </LinkButton>
+              </li>
+              <li>
+                <LinkButton title="Exchange" link="/exchange">
+                  <AccountBalanceIcon id="navIcon" />
+                </LinkButton>
+              </li>
+              <li>
+                <LinkButton title="News" link="/news">
+                  <LightbulbIcon id="navIcon" />
+                </LinkButton>
+              </li>
+            </ul>
+            <div className="profileContent">
+              <img
+                onClick={() => {
+                  location.push("/");
+                }}
+                src={Cryptologo}
+                alt="crypto News"
+              />
+            </div>
           </div>
-          {expand && !activeLogo ? (
-            <CloseIcon id="menuIcon" onClick={() => setexpand(false)} />
-          ) : !expand && !activeLogo ? (
-            <MenuIcon id="menuIcon" onClick={() => setexpand(true)} />
-          ) : activeLogo ? (
-            <img
-              src={Cryptologo}
-              onClick={() => {
-                location.push("/");
-              }}
-              id="logoImg"
-              alt="crypto News"
-            />
-          ) : null}
-        </div>
-        <ul className="navList">
-          <li>
-            <LinkButton title="Home" link="/home">
-              <HomeIcon id="navIcon" />
-            </LinkButton>
-          </li>
-          <li>
-            <LinkButton title="Crypto Currencies" link="/cryptoCurrency">
-              <TimelineOutlinedIcon id="navIcon" />
-            </LinkButton>
-          </li>
-          <li>
-            <LinkButton title="Exchange" link="/exchange">
-              <AccountBalanceIcon id="navIcon" />
-            </LinkButton>
-          </li>
-          <li>
-            <LinkButton title="News" link="/news">
-              <LightbulbIcon id="navIcon" />
-            </LinkButton>
-          </li>
-        </ul>
-        <div className="profileContent">
-          <img
-            onClick={() => {
-              location.push("/");
-            }}
-            src={Cryptologo}
-            alt="crypto News"
-          />
-        </div>
-      </div>
-      <div
-        className={
-          expand ? "mainContentContainer active" : "mainContentContainer"
-        }
-      >
-        <PageHeader />
-        <div className="childrenDev">{children}</div>
-      </div>
-    </section>
+          <div
+            className={
+              expand ? "mainContentContainer active" : "mainContentContainer"
+            }
+          >
+            <PageHeader />
+            <div className="childrenDev">{children}</div>
+          </div>
+        </section>
+      ) : (
+        <>{children}</>
+      )}
+    </>
   );
 }
 

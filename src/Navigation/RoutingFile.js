@@ -8,6 +8,7 @@ import LandingPage from "../Pages/LandingPage/LandingPage";
 import { useSelector } from "react-redux";
 import News from "../Pages/News/News";
 import CoinDetailPage from "../Pages/CoinDetailPage/CoinDetailPage";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 let DataRoute = ({ children, ...res }) => {
   const { data } = useSelector((state) => state.cryptoApi);
   return (
@@ -21,33 +22,38 @@ let DataRoute = ({ children, ...res }) => {
 };
 function RoutingFile() {
   const location = useLocation().pathname;
+  const newlocation = location.includes("/coinDetail/");
   return (
     <>
       {location === "/" ? (
         <Switch>
           <Route exact={true} path="/" component={LandingPage} />
-          <Route component={Home} />
         </Switch>
       ) : (
-        <AnimatedSideBar>
-          <Switch>
-            <DataRoute exact path="/home">
-              <Home />
-            </DataRoute>
-            <DataRoute exact path="/coinDetail/:coinid">
-              <CoinDetailPage />
-            </DataRoute>
-            <DataRoute exact path="/news">
-              <News />
-            </DataRoute>
-            <DataRoute exact path="/exchange">
-              <Exchanges />
-            </DataRoute>
-            <DataRoute exact path="/cryptoCurrency">
-              <CryptoCurrencies />
-            </DataRoute>
-          </Switch>
-        </AnimatedSideBar>
+        <>
+          <AnimatedSideBar
+            children={
+              <Switch>
+                <DataRoute exact={true} path="/home">
+                  <Home />
+                </DataRoute>
+                <DataRoute exact={true} path="/coinDetail/:coinid">
+                  <CoinDetailPage />
+                </DataRoute>
+                <DataRoute exact={true} path="/news">
+                  <News />
+                </DataRoute>
+                <DataRoute exact={true} path="/exchange">
+                  <Exchanges />
+                </DataRoute>
+                <DataRoute exact={true} path="/cryptoCurrency">
+                  <CryptoCurrencies />
+                </DataRoute>
+                <Route exact={true} component={ErrorPage} />
+              </Switch>
+            }
+          />
+        </>
       )}
     </>
   );
